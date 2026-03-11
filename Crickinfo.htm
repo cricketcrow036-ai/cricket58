@@ -1,0 +1,622 @@
+<html>
+
+   <head>
+
+      <title>Crickboyz</title>
+
+   </head>
+ <style>
+      
+
+
+
+body{
+           margin:0;
+           padding:0;
+           box-sizing: border-box;
+   }
+
+
+.box{
+     background-color:#eee;
+     width:330px;
+     height:50px;
+     border-radius:50px;
+     outline:ridge;
+      outline-style: double;
+     outline-width: thin;
+
+
+     display:flex;
+     align-items:center;
+     justify-content: space-between;
+     padding:0px 25px;
+margin-bottom:20px;
+   
+    }
+ input{
+        width:240px;
+        border:none;
+        outline:none;
+        background:none;
+        font-size:18px;
+     }
+button{
+border:none;
+background:orange;
+padding:8px 15px;
+border-radius:20px;
+cursor:pointer;
+color:white;
+}
+
+section{
+padding:50px;
+margin-bottom:20px;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+.highlight{
+background:yellow;
+transition: background 1s;
+}
+
+
+#suggestions{
+list-style:none;
+padding:0;
+margin:0;
+width:300px;
+background:white;
+border:1px solid #ccc;
+}
+
+#suggestions li{
+padding:8px;
+cursor:pointer;
+}
+
+#suggestions li:hover{
+background:#eee;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  h2 {
+       color:white;
+       text-shadow: 1px 1px 2px black,0 0 25px blue, 0 0 5px darkblue ;
+}
+
+h1 {
+    color:white;
+       text-shadow: 5px 1px 5px darkred,0 0 25px black, 0 0 5px darkblue ;
+box-shadow:1px 10px 20px black,0 0 25px black, 0 0 5px black;
+background-color:;
+
+
+ 
+
+  text-decoration-line: underline;
+  text-decoration-style:wavy ;
+  outline-width: thick;
+  outline-color: black;
+  }
+
+h3 {
+    color:black;
+         outline-color: black;}
+
+
+
+ ul {
+  
+  list-style-type: square;
+}
+
+img{  
+      width: 470px;
+      padding; 6px;
+      border: 3px solid white;
+      background-color:black;
+      box-shadow:1px 10px 20px black,0 0 25px , 0 0 5px darkgreen;
+
+   }
+
+video{
+      width: 470px;
+      padding; 6px;
+      border: 3px solid white;
+      background-color:black;
+      box-shadow:1px 10px 20px black,0 0 25px , 0 0 5px darkgreen;
+     }
+
+.navbar{
+background:#333;
+padding:10px;
+position:relative;
+}
+
+.menu{
+color:white;
+font-size:30px;
+cursor:pointer;
+text-align:left;
+}
+
+.nav-links{
+list-style:none;
+padding:0;
+margin:0;
+display:none;
+background:#444;
+}
+
+.nav-links li{
+border-bottom:1px solid #555;
+}
+
+.nav-links a{
+display:block;
+color:white;
+text-decoration:none;
+padding:12px;
+}
+
+.nav-links a:hover{
+background:orange;
+}
+.nav-links.show{
+display:block;
+}
+
+
+ 
+</style>
+    
+      
+   
+<body background="IMAGES\images (2).jpg">
+
+  
+     
+     
+              
+    <center>
+
+    <h1><font color=""size="10">CRICKBOYZ</font></b></></H1>
+<br>
+<p style="color:black;font-size:20px;">
+Website Created by: <b>MAHIR CHAVDA AND TEAM</b>
+</p>
+
+<nav class="navbar">
+
+<h3 class="logo"></h>
+
+<ul class="nav-links" id="menuList">
+<li><a href="#">BATSMAN</a></li>
+<li><a href="#">BOWLER</a></li>
+<li><a href="#">ALL-ROUNDERS</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+</nav>
+
+<script>
+
+function toggleMenu(){
+  var menu = document.getElementById("menuList");
+  menu.classList.toggle("show");
+}
+function searchPage(){
+  // Remove previous highlights
+  document.querySelectorAll("section").forEach(sec=>{
+    sec.classList.remove("highlight");
+  });
+
+  // Get search text
+  let text = document.getElementById("search").value.toLowerCase();
+
+  // Find matching section
+  let found = false;
+  document.querySelectorAll("section").forEach(sec=>{
+    if(sec.id.toLowerCase() === text){
+      sec.classList.add("highlight");   // Highlight the section
+      sec.scrollIntoView({behavior:"smooth"}); // Scroll to section
+      found = true;
+    }
+  });
+
+  if(!found){
+    alert("Section not found");
+  }
+}
+
+
+
+let players = [
+"virat kohli",
+"rohit sharma",
+"sachin tendulkar",
+"ms dhoni",
+"rahul dravid"
+];
+
+function showSuggestions(){
+
+let input = document.getElementById("search").value.toLowerCase();
+let suggestionBox = document.getElementById("suggestions");
+
+suggestionBox.innerHTML="";
+
+players.forEach(player=>{
+
+if(player.startsWith(input) && input !== ""){
+
+let li=document.createElement("li");
+li.textContent=player;
+
+li.onclick=function(){
+document.getElementById("search").value=player;
+suggestionBox.innerHTML="";
+searchPage();
+}
+
+suggestionBox.appendChild(li);
+
+}
+
+});
+
+}
+
+</script>
+ 
+
+<br>
+                <lable>
+
+
+
+<div class="box">
+<input type="text" id="search" placeholder="Search..." onkeyup="showSuggestions()">
+<button onclick="searchPage()">Search</button>
+</div>
+
+<ul id="suggestions"></ul>
+
+
+    
+
+
+
+
+
+
+
+         
+ <br>
+<br>
+<marquee><b> " THEY ARE NOT IN ANY PARTICULAR ORDER, THEY ARE ALL GREAT PLAYERS"</b></marquee>
+<br>
+<br>
+<br>
+
+
+
+
+<section id="virat kohli"></section>
+
+    <h2><u><font size="6">1.VIRAT KOHLI</font></u></h2>
+
+     <img src="IMAGES\gettyimages-2159896801-612x612.jpg"height="360"width="460">
+
+<font size="5">
+  <b> <P style="color:blue;background-color:white;"><b> Full Name: Virat Kohli</b></p>
+
+  <P style="color:blue;background-color:white;">Date of Birth: 5 November 1988</p>
+
+  <P style="color:blue;background-color:white;">Birthplace: Delhi, India</p>
+
+   <P style="color:blue;background-color:white;">Nationality: Indian</p>
+
+  <P style="color:blue;background-color:white;">Profession: International Cricketer</p>
+
+ <P style="color:blue;background-color:white;">Role: Top-order Batsman</p>
+
+ <P style="color:blue;background-color:white;">Batting Style: Right-handed</p>
+
+ <P style="color:blue;background-color:white;">Nickname: King Kohli</p>
+
+<video loop="5" autoplay="3" src="VIDEOS\Virat Kohli Best Cover Drives🥵🔥 - Harmeet Edits (1080p, h264).mp4" height="500px"width"500px" controls></video>
+
+
+
+</center>
+
+<br>
+<p style=background-color:black;" </p>
+<p></p>
+<ul>  
+
+<li>
+<p>Virat Kohli is one of the greatest batsmen in modern cricket.</p></li>
+
+<li><p>He is known for his aggressive playing style and strong determination.</p></li>
+
+<li><p>Kohli has scored centuries in all formats of international cricket.</p></li>
+
+<li><p>He has captained the Indian cricket team with passion and confidence.</p></li>
+
+<li><p>His fitness and discipline make him a role model for young athletes.</p></li>
+
+<li><p>Virat Kohli is admired worldwide for his consistency and match-winning performances.</p></li>
+
+<li><p>He continues to inspire millions of cricket fans around the globe.</p>
+ </li>
+<li><p>Virat Kohli is India’s most successful Test captain , he played 68 test as a captain and won 40 of them and 11 draws</p>
+
+
+</ul>
+
+
+
+<br>
+
+<center>
+
+  <section id="rohit sharma"></section>
+   <h2><u>2.ROHIT SHARMA</u></H2>
+
+<img src="IMAGES\Rohit Sharma.jpg"height="300"width="400"/>
+
+<P style="color:blue;background-color:white;">Full Name: Rohit Gurunath Sharma</p>
+
+<P style="color:blue;background-color:white;">Date of Birth: 30 April 1987</p>
+
+<P style="color:blue;background-color:white;">Birthplace: Nagpur, Maharashtra, India</p>
+
+<P style="color:blue;background-color:white;">Nationality: Indian</p>
+
+<P style="color:blue;background-color:white;">Profession: International Cricketer</p>
+
+
+<P style="color:blue;background-color:white;">Role: Opening Batsman</p>
+
+<P style="color:blue;background-color:white;">Batting Style: Right-handed</p>
+
+
+<P style="color:blue;background-color:white;">Nickname: Hitman</p>
+
+<video loop="5" autoplay="3"s src="VIDEOS\0225(1).mp4"height="700px"
+width="500px" controls></video>
+</center>
+<ul>
+
+<li><p>Rohit Sharma is one of the most talented opening batsmen in world cricket.</p>
+
+<li><p>He is known for his calm nature and elegant batting style</p>
+
+<li><p>Rohit holds the record for the highest individual score in ODIs (264 runs).</p>
+
+<li><p>He has scored multiple double centuries in One Day Internationals.</p>
+
+<li><p>His timing and shot selection make batting look effortless.</p>
+
+<li><p>Rohit Sharma is admired by millions of cricket fans around the world.</p>
+
+
+<li><p>As a captain, he leads the Indian cricket team with confidence and composure.</p>
+
+
+<li><p>he lead india to the 2023 ODI WORLD CUP FINAL without lossing a single match </p>
+
+<li><p>As a captain he won T20 WORLD CUP IN 2024 and CHAMPIONS TROPHY IN 2025  </p>
+
+
+
+</ul>
+<br>
+<br>
+ <center>
+
+<section id="sachin tendulkar"></section>
+
+
+   <h2><u>3.SACHIN TENDULKAR </u></H2>
+  <img src="IMAGES\gettyimages-111487120-612x612.jpg"hight="360" width="400">
+
+ <P style="color:blue;background-color:white;">Full Name: Sachin Ramesh Tendulkar</p>
+<P style="color:blue;background-color:white;">Date of Birth: 24 April 1973</p>
+<P style="color:blue;background-color:white;">Birthplace: Mumbai, Maharashtra, India</p>
+<P style="color:blue;background-color:white;">Nationality: Indian</p>
+<P style="color:blue;background-color:white;">Profession: Former International Cricketer</p>
+<P style="color:blue;background-color:white;">Role: Top-order Batsman</p>
+<P style="color:blue;background-color:white;">Batting Style: Right-handed</p>
+<P style="color:blue;background-color:white;">Nickname: GOD OF CRICKET</p>
+<P style="color:blue;background-color:white;"></p>
+
+
+<video loop="5" autoplay="3"s src="VIDEOS\0225.mp4"height="500px"
+width="500px" controls></video>
+
+  
+</center>
+
+<ul>
+
+
+
+<li><p>Sachin Tendulkar is one of the greatest batsmen in the history of world cricket.</p>
+<li><p>He is known for his dedication, discipline, and technically perfect batting style.</p>
+<li><p>Sachin holds the record for scoring 100 international centuries, a milestone unmatched in cricket.</p>
+<li><p>He became the first cricketer to score a double century in One Day Internationals (200*).</p>
+<li><p>He represented India for 24 years and carried the hopes of the nation with pride and consistency.</p>
+<li><p>His straight drive is considered one of the most beautiful shots in cricket history.</p>
+<li><p>Sachin Tendulkar is admired and respected by millions of cricket fans around the world and is often called the "God of Cricket."</p>
+<br>
+<br>
+<br>
+
+<center>
+<section id="ms dhoni"></section>
+
+   <h2><u>4.  MS DHONI </u></h2>
+
+
+<img src="IMAGES\gettyimages-111487207-612x612.jpg"hight="400" width="460">
+
+
+<P style="color:blue;background-color:white;">Full Name: Mahendra Singh Dhoni</p>
+<P style="color:blue;background-color:white;">Date of Birth: 7 July 1981</p>
+
+<P style="color:blue;background-color:white;">Birthplace: Ranchi, Jharkhand, India</p>
+
+<P style="color:blue;background-color:white;">Nationality: Indian</p>
+
+<P style="color:blue;background-color:white;">Profession: Former International Cricketer</p>
+
+<P style="color:blue;background-color:white;">Role: Wicket-keeper Batsman</p>
+
+<P style="color:blue;background-color:white;">Batting Style: Right-handed</p>
+
+<P style="color:blue;background-color:white;">Nickname: Mahi, Captain Cool</p>
+
+<P style="color:blue;background-color:white;"></p>
+
+
+<video loop="5" autoplay="3"s src="VIDEOS\ms dhoni shots.mp4"height="500px"
+width="500px" controls></video>
+
+
+
+
+
+   </center>
+
+
+
+<ul>
+
+
+
+<li><p>MS Dhoni is one of the greatest captains in the history of world cricket.</p>
+<li><p>He is known for his calm nature, sharp cricketing mind, and exceptional leadership skills.</p>
+
+<li><p>Dhoni is the only captain to win all three major ICC trophies — the T20 World Cup (2007), the ODI World Cup (2011), and the Champions Trophy (2013).Dhoni is the only captain to win all three major ICC trophies — the T20 World Cup (2007), the ODI World Cup (2011), and the Champions Trophy (2013).</p>
+
+<li><p>He played one of the most iconic innings in cricket history by scoring 91* in the 2011 World Cup final and finishing the match with a memorable six.</p>
+
+<li><p>He represented India with pride and led the team to numerous historic victories across all formats.</p>
+
+<li><p>His helicopter shot is considered one of the most powerful and unique shots in cricket.</p>
+
+<li><p>MS Dhoni is admired and respected by millions of cricket fans around the world and is fondly known as "Captain Cool."</p>
+<br>
+<br>
+<br>
+
+
+
+<center>
+
+<section id="rahul dravid"></section>
+
+
+<h2><u>5.RAHUL DRAVID</u></h2>
+
+<img src="IMAGES\gettyimages-119652288-612x612.jpg"height="320"width="440">
+
+<P style="color:blue;background-color:white;">Full Name: Rahul Sharad Dravid</p>
+<P style="color:blue;background-color:white;">Date of Birth: 11 January 1973</p>
+<P style="color:blue;background-color:white;">Birthplace: Indore, Madhya Pradesh, India</p>
+
+<P style="color:blue;background-color:white;">Nationality: Indian</p>
+
+<P style="color:blue;background-color:white;">Profession: Former International Cricketer, Cricket Coach</p>
+
+<P style="color:blue;background-color:white;">Role: Top-order Batsman</p>
+
+<P style="color:blue;background-color:white;">Batting Style: Right-handed</p>
+
+<P style="color:blue;background-color:white;">Nickname: The Wall</p>
+<P style="color:blue;background-color:white;"></p>
+
+
+
+<video loop="5" autoplay="3"s src="VIDEOS\rahul dravid THE WALL.mp4"height="500px"
+width="500px" controls></video>
+
+
+
+
+
+</center>
+
+<ul>
+
+
+<li><p>Rahul Dravid is one of the greatest batsmen in the history of Indian cricket.</p>
+<li><p>He is known for his solid technique, patience, and strong defensive skills at the crease.</p>
+<li><p>Dravid earned the nickname "The Wall" for his ability to stand firm against the toughest bowling attacks in world cricket.</p>
+<li><p>He scored over 13,000 runs in both Test and One Day International cricket, making him one of the highest run-scorers for India.</p>
+<li><p>He played a key role in many historic victories for India, especially in overseas Test matches.</p>
+<li><p>His calm temperament and dedication to the game made him one of the most respected cricketers in the world.</p>
+<li><p>Rahul Dravid is admired by cricket fans for his humility, discipline, and immense contribution to Indian cricket.</p>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+<p></p>
+<p></p>
+</b>
+
+<h2></h2>
+
+<footer style="background:black;color:white;padding:20px;text-align:center;">
+© 2026 CRICKBOYZ | Website Created by: MAHIR CHAVDA AND TEAM
+</footer>
+
+   </body>
+  
+</html>
+  
