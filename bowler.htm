@@ -1,0 +1,666 @@
+<html>
+
+<head>
+
+<title>Bowlers - CRICKBOYZ</title>
+
+<style>
+
+
+body{
+           margin:0;
+           padding:0;
+           box-sizing: border-box;
+          font-family:Arial;
+
+
+
+   }
+
+
+.box{
+     background-color:#eee;
+     width:330px;
+     height:50px;
+     border-radius:50px;
+     outline:ridge;
+      outline-style: double;
+     outline-width: thin;
+
+
+     display:flex;
+     align-items:center;
+     justify-content: space-between;
+     padding:0px 25px;
+margin-bottom:20px;
+   
+    }
+ input{
+        width:240px;
+        border:none;
+        outline:none;
+        background:none;
+        font-size:18px;
+     }
+button{
+border:none;
+background:orange;
+padding:8px 15px;
+border-radius:20px;
+cursor:pointer;
+color:white;
+}
+
+section{
+padding:50px;
+margin-bottom:20px;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+.highlight{
+background:yellow;
+transition: background 1s;
+}
+
+
+#suggestions{
+list-style:none;
+padding:0;
+margin:0;
+width:300px;
+background:white;
+border:1px solid #ccc;
+}
+
+#suggestions li{
+padding:8px;
+cursor:pointer;
+}
+
+#suggestions li:hover{
+background:#eee;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  h2 {
+       color:white;
+       text-shadow: 1px 1px 2px black,0 0 25px blue, 0 0 5px darkblue ;
+ text-decoration-line: underline;
+}
+
+h1 {
+    color:white;
+       text-shadow: 5px 1px 5px darkred,0 0 25px black, 0 0 5px darkblue ;
+box-shadow:1px 10px 20px black,0 0 25px black, 0 0 5px black;
+background-color:;
+
+
+ 
+
+  text-decoration-line: underline;
+  text-decoration-style:wavy ;
+  outline-width: thick;
+  outline-color: black;
+  }
+
+h3 {
+    color:black;
+         outline-color: black;}
+
+
+
+ ul {
+  
+  list-style-type: square;
+}
+
+img{  
+      width: 470px;
+      padding; 6px;
+      border: 3px solid white;
+      background-color:black;
+      box-shadow:1px 10px 20px black,0 0 25px , 0 0 5px darkgreen;
+
+   }
+
+video{
+      width: 470px;
+      padding; 6px;
+      border: 3px solid white;
+      background-color:black;
+      box-shadow:1px 10px 20px black,0 0 25px , 0 0 5px darkgreen;
+     }
+
+.navbar{
+background:#333;
+padding:10px;
+position:relative;
+}
+
+.menu{
+color:white;
+font-size:30px;
+cursor:pointer;
+text-align:left;
+}
+
+.nav-links{
+list-style:none;
+padding:0;
+margin:0;
+display:none;
+background:#444;
+}
+
+.nav-links li{
+border-bottom:1px solid #555;
+}
+
+.nav-links a{
+display:block;
+color:white;
+text-decoration:none;
+padding:12px;
+}
+
+.nav-links a:hover{
+background:orange;
+}
+.nav-links.show{
+display:block;
+}
+
+
+p{
+  line-height:1;
+
+}
+li{
+text-align:left;
+line-height:3;
+
+
+}
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  background:;
+  color: black;
+  padding: 10px;
+ font-size:30px;
+
+}
+
+.marquee p {
+  display: inline-block;
+  animation: scroll 15s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+ 
+</style>
+
+
+</head>
+
+<body background="IMAGES\images (2).jpg">
+
+
+
+<center>
+
+    <h1><font color=""size="10">CRICKBOYZ</font></b></></H1>
+<br>
+<p style="color:black;font-size:20px;">
+Website Created by: <b>MAHIR CHAVDA </b>
+</p>
+
+<nav class="navbar">
+
+<h3 class="logo"></h>
+
+<ul class="nav-links" id="menuList">
+<li><a href="C:\Users\COPA 3\Desktop\MAHIR0058\CRICKET58\Crickinfo.htm">BATSMAN</a></li>
+<li><a href="C:\Users\COPA 3\Desktop\MAHIR0058\CRICKET58\bowler.htm">BOWLER</a></li>
+<li><a href="C:\Users\COPA 3\Desktop\MAHIR0058\CRICKET58\all rounders.htm">ALL-ROUNDERS</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+</nav>
+
+<script>
+
+function toggleMenu(){
+  var menu = document.getElementById("menuList");
+  menu.classList.toggle("show");
+}
+function searchPage(){
+  // Remove previous highlights
+  document.querySelectorAll("section").forEach(sec=>{
+    sec.classList.remove("highlight");
+  });
+
+  // Get search text
+  let text = document.getElementById("search").value.toLowerCase();
+
+  // Find matching section
+  let found = false;
+  document.querySelectorAll("section").forEach(sec=>{
+    if(sec.id.toLowerCase() === text){
+      sec.classList.add("highlight");   // Highlight the section
+      sec.scrollIntoView({behavior:"smooth"}); // Scroll to section
+      found = true;
+    }
+  });
+
+  if(!found){
+    alert("Section not found");
+  }
+}
+
+
+
+let players = [
+"jasprit bumrah",
+"mohammed shami",
+"anil kumble",
+"zaheer khan",
+"harbhajan singh",
+"muttiah muralitharan",
+"dale steyn",
+"mitchell starc"
+
+
+];
+
+function showSuggestions(){
+
+let input = document.getElementById("search").value.toLowerCase();
+let suggestionBox = document.getElementById("suggestions");
+
+suggestionBox.innerHTML="";
+
+players.forEach(player=>{
+
+if(player.startsWith(input) && input !== ""){
+
+let li=document.createElement("li");
+li.textContent=player;
+
+li.onclick=function(){
+document.getElementById("search").value=player;
+suggestionBox.innerHTML="";
+searchPage();
+}
+
+suggestionBox.appendChild(li);
+
+}
+
+});
+
+}
+
+</script>
+ 
+
+<br>
+                <lable>
+
+
+
+<div class="box">
+<input type="text" id="search" placeholder="Search..." onkeyup="showSuggestions()">
+<button onclick="searchPage()">Search</button>
+</div>
+
+<ul id="suggestions"></ul>
+
+
+    
+
+
+
+
+
+
+
+         
+ <br>
+<br>
+<div class="marquee">
+  <p>" THEY ARE NOT IN ANY PARTICULAR ORDER, THEY ARE ALL GREAT PLAYERS."</p>
+</div><br><br>
+<br>
+<br>
+
+
+
+
+
+<section id="jasprit bumrah"></section>
+
+ <h2><u><font size="6">1.JASPRIT BUMRAH
+</font></u></h2>
+<img src="IMAGES\gettyimages-2265444163-612x612.jpg" height="320" width="420">
+<font size="5">
+
+<b><p style="color:blue;background-color:white;">Full Name: Jasprit Jasbirsingh Bumrah</p>
+<p style="color:blue;background-color:white;">Date of Birth: 6 December 1993</p>
+<p style="color:blue;background-color:white;">Birthplace: Gujarat, India</p>
+<p style="color:blue;background-color:white;">Nationality: Indian</p>
+<p style="color:blue;background-color:white;">Role: Fast Bowler</p>
+<p style="color:blue;background-color:white;">Bowling Style: Right-arm fast</p>
+<p style="color:blue;background-color:white;">Nickname: Boom Boom Bumrah</p>
+</center>
+
+<ul>
+<li>Bumrah is one of the best fast bowlers in the world.</li>
+<li>He is famous for his deadly yorkers.</li>
+<li>He has a unique bowling action.</li>
+<li>Bumrah performs well in all formats.</li>
+<li>He is a key player for India.</li>
+<li>He has taken many match-winning wickets.</li>
+<li>He is known for calm mindset under pressure.</li>
+</ul>
+<br><br>
+<center>
+<section id="dale steyn"></section>
+
+<h2>2.Dale Steyn</h2>
+
+<img src="IMAGES\gettyimages-460974576-612x612.jpg" height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Dale william Steyn</p>
+<p style="color:blue;background-color:white;">Date of Birth: 27 June 1983</p>
+<p style="color:blue;background-color:white;">Birthplace: South Africa</p>
+<p style="color:blue;background-color:white;">Nationality: South African</p>
+<p style="color:blue;background-color:white;">Role: Fast Bowler</p>
+<p style="color:blue;background-color:white;">Bowling Style: Right-arm fast</p>
+<p style="color:blue;background-color:white;">Nickname: Steyn Gun</p>
+
+</center>
+
+<ul>
+<li>Dale Steyn is one of the fastest bowlers.</li>
+<li>He had excellent swing and pace.</li>
+<li>Steyn dominated Test cricket.</li>
+<li>He took over 400 Test wickets.</li>
+<li>He was very aggressive.</li>
+<li>He is a South African legend.</li>
+<li>He is known for fiery spells.</li>
+</ul>
+
+<br><br>
+<center>
+<section id="mitchell starc"></section>
+
+<h2>3.Mitchell Starc</h2>
+
+<img src="IMAGES\gettyimages-2247728934-612x612.jpg" height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Mitchell Aaron Starc</p>
+<p style="color:blue;background-color:white;">Date of Birth: 30 January 1990</p>
+<p style="color:blue;background-color:white;">Birthplace: Australia</p>
+<p style="color:blue;background-color:white;">Nationality: Australian</p>
+<p style="color:blue;background-color:white;">Role: Fast Bowler</p>
+<p style="color:blue;background-color:white;">Bowling Style: Left-arm fast</p>
+<p style="color:blue;background-color:white;">Nickname: Starc</p>
+
+</center>
+
+<ul>
+<li>Starc is one of the fastest bowlers.</li>
+<li>He is famous for yorkers and pace.</li>
+<li>He has dominated World Cups.</li>
+<li>Starc has taken many wickets.</li>
+<li>He swings the ball at high speed.</li>
+<li>He is a match-winner for Australia.</li>
+<li>He is one of the best left-arm pacers.</li>
+</ul>
+
+<br><br>
+<center>
+
+<section id="muttiah muralitharan"></section>
+
+<h2>4.Muttiah Muralitharan</h2>
+
+<img src="IMAGES\gettyimages-78341032-612x612.jpg" height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Muttiah Muralitharan</p>
+<p style="color:blue;background-color:white;">Date of Birth: 17 April 1972</p>
+<p style="color:blue;background-color:white;">Birthplace: Sri Lanka</p>
+<p style="color:blue;background-color:white;">Nationality: Sri Lankan</p>
+<p style="color:blue;background-color:white;">Role: Spin Bowler</p>
+<p style="color:blue;background-color:white;">Bowling Style: Right-arm off spin</p>
+<p style="color:blue;background-color:white;">Nickname: Murali</p>
+
+</center>
+
+<ul>
+<li>Muralitharan is the highest wicket-taker.</li>
+<li>He took 800 Test wickets.</li>
+<li>He had a unique bowling action.</li>
+<li>Murali was very consistent.</li>
+<li>He troubled all batsmen.</li>
+<li>He is a Sri Lankan legend.</li>
+<li>He is one of the greatest spinners ever.</li>
+</ul>
+
+<br><br>
+<center>
+<section id="shane warne"></section>
+
+<h2>5.Shane Warne</h2>
+
+<img src="IMAGES\gettyimages-72578819-612x612.jpg" height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Shane Keith Warne</p>
+<p style="color:blue;background-color:white;">Date of Birth: 13 September 1969</p>
+<p style="color:blue;background-color:white;">Birthplace: Australia</p>
+<p style="color:blue;background-color:white;">Nationality: Australian</p>
+<p style="color:blue;background-color:white;">Role: Spin Bowler</p>
+<p style="color:blue;background-color:white;">Bowling Style: Right-arm leg spin</p>
+<p style="color:blue;background-color:white;">Nickname: King of Spin</p>
+
+</center>
+
+<ul>
+<li>Shane Warne is one of the greatest leg spinners.</li>
+<li>He took over 700 Test wickets.</li>
+<li>He bowled the famous "Ball of the Century".</li>
+<li>Warne was very skillful.</li>
+<li>He was a match-winner.</li>
+<li>He played a key role in World Cups.</li>
+<li>He is an Australian legend.</li>
+</ul>
+
+<br><br>
+
+<!-- MOHAMMED SHAMI -->
+<center>
+<section id="mohammed shami"></section>
+
+<h2>6. MOHAMMED SHAMI</h2>
+
+<img src="IMAGES\gettyimages-1795149939-612x612.jpg" height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Mohammed Shami Ahmed</p>
+<p style="color:blue;background-color:white;">Date of Birth: 3 September 1990</p>
+<p style="color:blue;background-color:white;">Birthplace: Uttar Pradesh, India</p>
+<p style="color:blue;background-color:white;">Nationality: Indian</p>
+<p style="color:blue;background-color:white;">Role: Fast Bowler</p>
+<p style="color:blue;background-color:white;">Bowling Style: Right-arm fast</p>
+<p style="color:blue;background-color:white;">Nickname: Shami</p>
+</center>
+
+
+<ul>
+<li>Shami is known for his speed and swing.</li>
+<li>He is one of India’s best wicket-takers.</li>
+<li>He has taken many five-wicket hauls.</li>
+<li>Shami is deadly in World Cups.</li>
+<li>He bowls accurate seam deliveries.</li>
+<li>He is a match-winner for India.</li>
+<li>He performs well under pressure.</li>
+</ul>
+<br><br>
+<center>
+
+<section id="wasim akram"></section>
+
+<h2>7.Wasim Akram</h2>
+
+<img src="IMAGES\gettyimages-51505520-612x612.jpg"height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Wasim Akram</p>
+<p style="color:blue;background-color:white;">Date of Birth: 3 June 1966</p>
+<p style="color:blue;background-color:white;">Birthplace: Pakistan</p>
+<p style="color:blue;background-color:white;">Nationality: Pakistani</p>
+<p style="color:blue;background-color:white;">Role: Fast Bowler</p>
+<p style="color:blue;background-color:white;">Bowling Style: Left-arm fast</p>
+<p style="color:blue;background-color:white;">Nickname: Sultan of Swing</p>
+
+</center>
+
+<ul>
+<li>Wasim Akram is one of the greatest fast bowlers.</li>
+<li>He was master of swing bowling.</li>
+<li>He took over 900 international wickets.</li>
+<li>He played a key role in 1992 World Cup.</li>
+<li>Akram was deadly in death overs.</li>
+<li>He could reverse swing the ball.</li>
+<li>He is a cricket legend.</li>
+</ul>
+
+<br><br>
+<center>
+
+<!-- ANIL KUMBLE -->
+<section id="anil kumble"></section>
+
+
+<h2>8. ANIL KUMBLE</h2>
+
+<img src="IMAGES\gettyimages-2012702194-612x612.jpg"height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Anil Kumble</p>
+<p style="color:blue;background-color:white;">Date of Birth: 17 October 1970</p>
+<p style="color:blue;background-color:white;">Birthplace: Bangalore, India</p>
+<p style="color:blue;background-color:white;">Nationality: Indian</p>
+<p style="color:blue;background-color:white;">Role: Spin Bowler</p>
+<p style="color:blue;background-color:white;">Bowling Style: Right-arm leg spin</p>
+<p style="color:blue;background-color:white;">Nickname: Jumbo</p>
+</center>
+
+<ul>
+<li>Kumble is one of the greatest spin bowlers.</li>
+<li>He took over 600 Test wickets.</li>
+<li>He once took all 10 wickets in an innings.</li>
+<li>Kumble was very consistent.</li>
+<li>He played many match-winning spells.</li>
+<li>He was also captain of India.</li>
+<li>He is a cricket legend.</li>
+</ul>
+<br><br>
+<center>
+
+
+<!-- ZAHEER KHAN -->
+<section id="zaheer khan"></section>
+
+
+<h2>9. ZAHEER KHAN</h2>
+
+<img src="IMAGES\gettyimages-108260244-612x612.jpg" height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Zaheer Khan</p>
+<p style="color:blue;background-color:white;">Date of Birth: 7 October 1978</p>
+<p style="color:blue;background-color:white;">Birthplace: Maharashtra, India</p>
+<p style="color:blue;background-color:white;">Nationality: Indian</p>
+<p style="color:blue;background-color:white;">Role: Fast Bowler</p>
+<p style="color:blue;background-color:white;">Bowling Style: Left-arm fast</p>
+<p style="color:blue;background-color:white;">Nickname: Zak</p>
+</center>
+
+<li>Zaheer Khan was India’s leading fast bowler.</li>
+<li>He played a key role in 2011 World Cup.</li>
+<li>He was known for swing bowling.</li>
+<li>He took many important wickets.</li>
+<li>Zaheer was very experienced.</li>
+<li>He led the bowling attack.</li>
+<li>He is one of India’s best pacers.</li>
+</ul><br><br>
+<center>
+
+
+<!-- HARbhajan SINGH -->
+<section id="harbhajan singh"></section>
+
+
+<h2>10. HARBHAJAN SINGH</h2>
+
+<img src="IMAGES\gettyimages-51893009-612x612.jpg" height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Harbhajan Singh</p>
+<p style="color:blue;background-color:white;">Date of Birth: 3 July 1980</p>
+<p style="color:blue;background-color:white;">Role: Off Spin Bowler</p>
+</center>
+
+<ul>
+
+<li>Harbhajan Singh is one of India's most successful spin bowlers.</li>
+<li>He was the first Indian to take a Test hat-trick.</li>
+<li>He played a key role in many historic matches.</li>
+
+</ul>
+
+<footer style="background:black;color:white;padding:20px;text-align:center;">
+© 2026 CRICKBOYZ | Website Created by: MAHIR CHAVDA AND TEAM
+</footer>
+
+
+</body>
+
+
+</b>
+
+
+
+
+
+
+
+</html>
