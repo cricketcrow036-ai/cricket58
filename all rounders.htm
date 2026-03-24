@@ -1,0 +1,571 @@
+<html>
+
+<head>
+
+<title>All Rounders - CRICKBOYZ</title>
+
+<style>
+
+
+body{
+           margin:0;
+           padding:0;
+           box-sizing: border-box;
+          font-family:Arial;
+
+
+
+   }
+
+
+.box{
+     background-color:#eee;
+     width:330px;
+     height:50px;
+     border-radius:50px;
+     outline:ridge;
+      outline-style: double;
+     outline-width: thin;
+
+
+     display:flex;
+     align-items:center;
+     justify-content: space-between;
+     padding:0px 25px;
+margin-bottom:20px;
+   
+    }
+ input{
+        width:240px;
+        border:none;
+        outline:none;
+        background:none;
+        font-size:18px;
+     }
+button{
+border:none;
+background:orange;
+padding:8px 15px;
+border-radius:20px;
+cursor:pointer;
+color:white;
+}
+
+section{
+padding:50px;
+margin-bottom:20px;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+.highlight{
+background:yellow;
+transition: background 1s;
+}
+
+
+#suggestions{
+list-style:none;
+padding:0;
+margin:0;
+width:300px;
+background:white;
+border:1px solid #ccc;
+}
+
+#suggestions li{
+padding:8px;
+cursor:pointer;
+}
+
+#suggestions li:hover{
+background:#eee;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  h2 {
+       color:white;
+       text-shadow: 1px 1px 2px black,0 0 25px blue, 0 0 5px darkblue ;
+ text-decoration-line: underline;
+}
+
+h1 {
+    color:white;
+       text-shadow: 5px 1px 5px darkred,0 0 25px black, 0 0 5px darkblue ;
+box-shadow:1px 10px 20px black,0 0 25px black, 0 0 5px black;
+background-color:;
+
+
+ 
+
+  text-decoration-line: underline;
+  text-decoration-style:wavy ;
+  outline-width: thick;
+  outline-color: black;
+  }
+
+h3 {
+    color:black;
+         outline-color: black;}
+
+
+
+ ul {
+  
+  list-style-type: square;
+}
+
+img{  
+      width: 470px;
+      padding; 6px;
+      border: 3px solid white;
+      background-color:black;
+      box-shadow:1px 10px 20px black,0 0 25px , 0 0 5px darkgreen;
+
+   }
+
+video{
+      width: 470px;
+      padding; 6px;
+      border: 3px solid white;
+      background-color:black;
+      box-shadow:1px 10px 20px black,0 0 25px , 0 0 5px darkgreen;
+     }
+
+.navbar{
+background:#333;
+padding:10px;
+position:relative;
+}
+
+.menu{
+color:white;
+font-size:30px;
+cursor:pointer;
+text-align:left;
+}
+
+.nav-links{
+list-style:none;
+padding:0;
+margin:0;
+display:none;
+background:#444;
+}
+
+.nav-links li{
+border-bottom:1px solid #555;
+}
+
+.nav-links a{
+display:block;
+color:white;
+text-decoration:none;
+padding:12px;
+}
+
+.nav-links a:hover{
+background:orange;
+}
+.nav-links.show{
+display:block;
+}
+
+p{
+  line-height:1;
+
+}
+li{
+text-align:left;
+line-height:3;
+
+
+}
+
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  background:;
+  color: black;
+  padding: 10px;
+ font-size:30px;
+
+}
+
+.marquee p {
+  display: inline-block;
+  animation: scroll 15s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+ 
+</style>
+
+
+</head>
+
+<body background="IMAGES\images (2).jpg">
+
+
+
+<center>
+
+    <h1><font color=""size="10">CRICKBOYZ</font></b></></H1>
+<br>
+<p style="color:black;font-size:20px;">
+Website Created by: <b>MAHIR CHAVDA </b>
+</p>
+
+<nav class="navbar">
+
+<h3 class="logo"></h>
+
+<ul class="nav-links" id="menuList">
+<li><a href="C:\Users\COPA 3\Desktop\MAHIR0058\CRICKET58\Crickinfo.htm">BATSMAN</a></li>
+<li><a href="C:\Users\COPA 3\Desktop\MAHIR0058\CRICKET58\bowler.htm">BOWLER</a></li>
+<li><a href="C:\Users\COPA 3\Desktop\MAHIR0058\CRICKET58\all rounders.htm">ALL-ROUNDERS</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+</nav>
+
+<script>
+
+function toggleMenu(){
+  var menu = document.getElementById("menuList");
+  menu.classList.toggle("show");
+}
+function searchPage(){
+  // Remove previous highlights
+  document.querySelectorAll("section").forEach(sec=>{
+    sec.classList.remove("highlight");
+  });
+
+  // Get search text
+  let text = document.getElementById("search").value.toLowerCase();
+
+  // Find matching section
+  let found = false;
+  document.querySelectorAll("section").forEach(sec=>{
+    if(sec.id.toLowerCase() === text){
+      sec.classList.add("highlight");   // Highlight the section
+      sec.scrollIntoView({behavior:"smooth"}); // Scroll to section
+      found = true;
+    }
+  });
+
+  if(!found){
+    alert("Section not found");
+  }
+}
+
+
+
+let players = [
+"kapil dev",
+"hardik pandya",
+"ravindra jadeja",
+"ravichandran ashwin",
+"irfan pathan",
+"jacques kallis",
+];
+
+function showSuggestions(){
+
+let input = document.getElementById("search").value.toLowerCase();
+let suggestionBox = document.getElementById("suggestions");
+
+suggestionBox.innerHTML="";
+
+players.forEach(player=>{
+
+if(player.startsWith(input) && input !== ""){
+
+let li=document.createElement("li");
+li.textContent=player;
+
+li.onclick=function(){
+document.getElementById("search").value=player;
+suggestionBox.innerHTML="";
+searchPage();
+}
+
+suggestionBox.appendChild(li);
+
+}
+
+});
+
+}
+
+</script>
+ 
+
+<br>
+                <lable>
+
+
+
+<div class="box">
+<input type="text" id="search" placeholder="Search..." onkeyup="showSuggestions()">
+<button onclick="searchPage()">Search</button>
+</div>
+
+<ul id="suggestions"></ul>
+
+
+    
+
+
+
+
+
+
+
+         
+ <br>
+<br>
+<div class="marquee">
+  <p>" THEY ARE NOT IN ANY PARTICULAR ORDER, THEY ARE ALL GREAT PLAYERS."</p>
+</div><br><br>
+<br>
+<br>
+<section id="Jacques Kallis"></section>
+
+
+ <b><h2><u><font size="6">1.JACQUES KALLIS</font></u></h2>
+<img src="IMAGES\gettyimages-459674279-612x612.jpg"  height="320" width="420">
+<font size="5">
+<p style="color:blue;background-color:white;">Full Name: Jacques Kallis</p>
+<p style="color:blue;background-color:white;">Date of Birth: 16 October 1975</p>
+<p style="color:blue;background-color:white;">Birthplace: South Africa</p>
+<p style="color:blue;background-color:white;">Nationality: South African</p>
+<p style="color:blue;background-color:white;">Role: All-rounder</p>
+<p style="color:blue;background-color:white;">Batting Style: Right-handed</p>
+<p style="color:blue;background-color:white;">Nickname: Kallis</p>
+
+
+
+</center>
+<ul>
+<li>Kallis is one of the greatest all-rounders.</li>
+<li>He scored over 25,000 international runs.</li>
+<li>He took more than 500 wickets.</li>
+<li>He was very consistent.</li>
+<li>Kallis was strong in Test cricket.</li>
+<li>He played many match-winning innings.</li>
+<li>He is a South African legend.</li>
+</ul>
+
+
+
+
+<br><br>
+<center>
+
+<section id="kapil dev"></section>
+
+<h2>2.KAPIL DEV</h2>
+
+<img src="IMAGES\gettyimages-106557600-612x612.jpg"height="320" width="420">
+<p style="color:blue;background-color:white;">Full Name: Kapil Dev Ramlal Nikhanj</p>
+<p style="color:blue;background-color:white;">Date of Birth: 6 January 1959</p>
+<p style="color:blue;background-color:white;">Birthplace: Chandigarh, India</p>
+<p style="color:blue;background-color:white;">Role: Fast Bowling All-rounder</p>
+<p style="color:blue;background-color:white;">Batting Style: Right-handed</p>
+<p style="color:blue;background-color:white;">Nickname: Haryana Hurricane</p>
+
+
+
+</center>
+
+<ul>
+
+<li>Kapil Dev is one of the greatest all-rounders in cricket history.</li>
+<li>He led India to its first Cricket World Cup victory in 1983.</li>
+<li>He was known for powerful batting and fast bowling.</li>
+<li>Kapil Dev took more than 400 wickets in Test cricket.</li>
+<li>He played many match-winning innings.</li>
+<li>He is a legend of Indian cricket.</li>
+</ul>
+
+<br><br>
+
+
+<br><br>
+
+<center>
+<section id="hardik pandya"></section>
+
+<h2>2. HARDIK PANDYA  </h2>
+
+<img src="C:\Users\COPA 3\Desktop\MAHIR0058\CRICKET58\IMAGES\gettyimages-2265011328-612x612.jpg"height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Hardik Himanshu Pandya</p>
+<p style="color:blue;background-color:white;">Date of Birth: 11 October 1993</p>
+<p style="color:blue;background-color:white;">Birthplace: Gujarat, India</p>
+<p style="color:blue;background-color:white;">Nationality: Indian</p>
+<p style="color:blue;background-color:white;">Role: All-rounder</p>
+<p style="color:blue;background-color:white;">Batting Style: Right-handed</p>
+<p style="color:blue;background-color:white;">Nickname: Kung Fu Pandya</p>
+
+</center>
+
+
+<ul>
+<li>Hardik Pandya is known for his explosive batting.</li>
+<li>He is also an effective medium-fast bowler.</li>
+<li>Hardik has played many match-winning innings for India.</li>
+<li>He is one of the most dynamic players in modern cricket.</li>
+<li>Hardik is very aggressive.</li>
+<li>He is a key player in T20 cricket.</li>
+<li>He has captained IPL teams.</li>
+<li>He is one of India’s best modern all-rounders.</li>
+
+</ul>
+
+<br><br>
+<center>
+
+
+<!-- -->
+<section id="ravindra Jadeja"></section>
+
+
+<h2>3.RAVINDRA JADEJA </h2>
+
+<img src="C:\Users\COPA 3\Desktop\MAHIR0058\CRICKET58\IMAGES\gettyimages-2238565799-612x612.jpg"height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Ravindra Jadeja</p>
+<p style="color:blue;background-color:white;">Date of Birth: 6 December 1988</p>
+<p style="color:blue;background-color:white;">Birthplace: Gujarat, India</p>
+<p style="color:blue;background-color:white;">Role: Spin Bowling All-rounder</p>
+<p style="color:blue;background-color:white;">Batting Style: Left-handed</p>
+<p style="color:blue;background-color:white;">Nickname: Sir Jadeja</p>
+
+
+</center>
+
+<ul>
+<li>Ravindra Jadeja is one of the best fielders in world cricket.</li>
+<li>He is known for accurate left-arm spin bowling.</li>
+<li>Jadeja has scored many important runs for India.</li>
+<li>He plays a crucial role in all formats of cricket.</li>
+<li>He is a match-winner for India.</li>
+<li>He performs well in all formats.</li>
+<li>He is a complete all-rounder.</li>
+</ul>
+
+<br><br>
+<center>
+
+
+<!--  -->
+<section id="ravichandran ashwin"></section>
+
+
+<h2>4.  RAVICHANDRAN ASHWIN</h2>
+
+<img src="C:\Users\COPA 3\Desktop\MAHIR0058\CRICKET58\IMAGES\gettyimages-2180069021-612x612.jpg" height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Ravichandran Ashwin</p>
+<p style="color:blue;background-color:white;">Date of Birth: 17 September 1986</p>
+<p style="color:blue;background-color:white;">Birthplace: Chennai, India</p>
+<p style="color:blue;background-color:white;">Role: Spin Bowling All-rounder</p>
+<p style="color:blue;background-color:white;">Batting Style: Right-handed</p>
+<p style="color:blue;background-color:white;">Nickname: Ash</p>
+
+</center>
+
+<ul>
+
+<li>Ashwin is one of the most successful spin bowlers in India.</li>
+<li>He has taken more than 400 wickets in Test cricket.</li>
+<li>He is also capable of scoring valuable runs.</li>
+<li>Ashwin is known for his smart bowling strategies.</li>
+<li>Ashwin performs well in Tests.</li>
+<li>He is very experienced.</li>
+<li>He is a match-winner for India.</li>
+
+</ul>
+
+<br><br>
+<center>
+
+
+
+<section id="irfan pathan"></section>
+
+
+<h2>5. IRFAN PATHAN </h2>
+
+<img src="C:\Users\COPA 3\Desktop\MAHIR0058\CRICKET58\IMAGES\gettyimages-152628866-612x612.jpg" height="320" width="420">
+
+<p style="color:blue;background-color:white;">Full Name: Irfan Khan Pathan</p>
+<p style="color:blue;background-color:white;">Date of Birth: 27 October 1984</p>
+<p style="color:blue;background-color:white;">Birthplace: Gujarat, India</p>
+<p style="color:blue;background-color:white;">Role: Fast Bowling All-rounder</p>
+<p style="color:blue;background-color:white;">Batting Style: Left-handed</p>
+<p style="color:blue;background-color:white;">Nickname: Irfan</p>
+
+</center>
+
+<ul>
+
+<li>Irfan Pathan was one of India's best swing bowlers.</li>
+<li>He is famous for taking a hat-trick in the first over of a Test match.</li>
+<li>He was a key player in India's 2007 T20 World Cup victory.</li>
+<li>He was a key player in 2007 T20 World Cup.</li>
+<li>He could bat well under pressure.</li>
+<li>He played many match-winning performances.</li>
+<li>He was an important all-rounder.</li>
+<li>He is loved by cricket fans.</li>
+
+</ul>
+
+</b>
+<footer style="background:black;color:white;padding:20px;text-align:center;">
+© 2026 CRICKBOYZ | Website Created by: MAHIR CHAVDA AND TEAM
+</footer>
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>
