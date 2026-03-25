@@ -1,0 +1,189 @@
+<html>
+
+<head>
+<title>Crickboyz - Contact</title>
+</head>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+box-sizing: border-box;
+font-family:Arial;
+}
+
+.navbar{
+background:#333;
+padding:10px;
+position:relative;
+}
+
+.menu{
+color:white;
+font-size:30px;
+cursor:pointer;
+text-align:left;
+}
+
+.nav-links{
+list-style:none;
+padding:0;
+margin:0;
+display:none;
+background:#444;
+}
+
+.nav-links li{
+border-bottom:1px solid #555;
+}
+
+.nav-links a{
+display:block;
+color:white;
+text-decoration:none;
+padding:12px;
+}
+
+.nav-links a:hover{
+background:orange;
+}
+
+.nav-links.show{
+display:block;
+}
+
+h1 {
+    color:white;
+       text-shadow: 5px 1px 5px darkred,0 0 25px black, 0 0 5px darkblue ;
+box-shadow:1px 10px 20px black,0 0 25px black, 0 0 5px black;
+background-color:;
+
+
+ 
+
+  text-decoration-line: underline;
+  text-decoration-style:wavy ;
+  outline-width: thick;
+  outline-color: black;
+  }
+
+h2{
+color:black;
+text-align:center;
+text-decoration:underline;
+font-size:30px;
+font-family:arial;
+}
+
+.contact-box{
+background:rgba(0,0,0,0.7);
+padding:20px;
+width:350px;
+margin:auto;
+border-radius:15px;
+}
+
+input, textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+outline:none;
+}
+
+button{
+border:none;
+background:orange;
+padding:10px;
+border-radius:20px;
+cursor:pointer;
+color:white;
+width:100%;
+}
+
+button:hover{
+background:red;
+}
+
+.info{
+text-align:center;
+color:black;
+margin-top:20px;
+font-size:20px;
+
+}
+
+</style>
+
+<body background="IMAGES\images (2).jpg">
+
+<center>
+
+<h1><font color=""size="10">CRICKBOYZ</font></b></></H1>
+
+
+<p style="color:black;font-size:20px;">
+Website Created by: <b>MAHIR CHAVDA AND TEAM</b>
+</p>
+
+</center>
+
+<!-- NAVBAR SAME AS YOUR SITE -->
+<nav class="navbar">
+
+<ul class="nav-links" id="menuList">
+<li><a href="Crickinfo.htm">BATSMAN</a></li>
+<li><a href="bowler.htm">BOWLER</a></li>
+<li><a href="all rounders.htm">ALL-ROUNDERS</a></li>
+<li><a href="contact.htm">CONTACT</a></li>
+</ul>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+</nav>
+
+<script>
+function toggleMenu(){
+var menu = document.getElementById("menuList");
+menu.classList.toggle("show");
+}
+</script>
+
+<br><br>
+
+<h2>CONTACT US</h2>
+
+<div class="contact-box">
+
+<form onsubmit="alert('Message Sent Successfully!')">
+
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="4" placeholder="Your Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</div>
+
+<div class="info">
+
+<p>📧 Email:cricketcrow036@gmail.com</p>
+<p>📍 Location: Anand,Gujarat,India</p>
+
+<p>Follow us:</p>
+<a href="https://www.instagram.com/mahir_00_58">Instagram</a> |
+
+</div>
+
+<br><br>
+
+<footer style="background:black;color:white;padding:20px;text-align:center;">
+© 2026 CRICKBOYZ | Website Created by: MAHIR CHAVDA AND TEAM
+</footer>
+
+</body>
+</html>
